@@ -41,7 +41,7 @@ app.post('/signin', (req, res) => {
 //     console.log('second guess', result);
 // });
 	if (req.body.email === database.users[0].email && req.body.password === database.users[0].password){
-		res.json('success');
+		res.json(database.users[0]);
 	} else {
 		res.status(400).json('error logging in');
 	}
@@ -84,7 +84,7 @@ app.put('/image', (req, res) => {
 		if (user.id === id){
 			found = true;
 			user.entries++
-			res.json(user.entries);
+			return res.json(user.entries);
 		} 
 	})
 	if(!found){
